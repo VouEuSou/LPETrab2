@@ -13,7 +13,7 @@ export default function Login() {
   const router = useRouter()
 
   async function verificaLogin(data) {
-//    console.log(data)
+    //    console.log(data)
     const login = `email=${data.email}&senha=${data.senha}`
     const response = await fetch(`http://localhost:3004/clientes?${login}`)
     const cliente = await response.json()
@@ -24,34 +24,34 @@ export default function Login() {
       mudaId(cliente[0].id)
       mudaNome(cliente[0].nome)
       mudaIsAdmin(cliente[0].isAdmin)
-      
-      localStorage.setItem("cliente_logado", JSON.stringify({id: cliente[0].id, nome: cliente[0].nome, isAdmin: cliente[0].isAdmin}))
+
+      localStorage.setItem("cliente_logado", JSON.stringify({ id: cliente[0].id, nome: cliente[0].nome, isAdmin: cliente[0].isAdmin }))
       router.push("/listar")
     }
   }
 
   return (
-    <main class="form-signin w-100 m-auto">
+    <main className="form-signin w-100 m-auto">
       <form onSubmit={handleSubmit(verificaLogin)}>
-        <h1 class="h3 mb-3 fw-normal mt-5">Login do Cliente</h1>
+        <h1 className="h3 mb-3 fw-normal mt-5">Login do Cliente</h1>
 
-        <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" 
-           required {...register("email")} />
+        <div className="form-floating">
+          <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
+            required {...register("email")} />
           <label for="floatingInput">E-mail</label>
         </div>
-        <div class="form-floating mt-3">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" 
+        <div className="form-floating mt-3">
+          <input type="password" className="form-control" id="floatingPassword" placeholder="Password"
             required {...register("senha")} />
           <label for="floatingPassword">Senha de Acesso</label>
         </div>
 
-        <div class="form-check text-end my-4">
+        <div className="form-check text-end my-4">
           <Link href="/novocliente">
             Novo Cliente: Cadastre-se
           </Link>
         </div>
-        <button class="btn btn-primary w-100 py-2" type="submit">Entrar</button>
+        <button className="btn btn-primary w-100 py-2" type="submit">Entrar</button>
       </form>
     </main>
   )

@@ -12,42 +12,42 @@ export default function Home() {
     async function getAlbuns() {
       const response = await fetch("http://localhost:3004/albuns")
       const dados = await response.json()
-      const albunsOrdenados = [...dados].sort((a, b) => (b.soma/b.num) - (a.soma/a.num));
+      const albunsOrdenados = [...dados].sort((a, b) => (b.soma / b.num) - (a.soma / a.num));
       setAlbuns(albunsOrdenados);
     }
     getAlbuns()
   }, [])
 
-    const listaAlbuns = albuns.slice(0, 6).map(album => (
-      <ItemLista key={album.id}
-        album={album}
-      />
-    ))
-  
+  const listaAlbuns = albuns.slice(0, 6).map(album => (
+    <ItemLista key={album.id}
+      album={album}
+    />
+  ))
 
 
-    return (
-      <div>
-        <div className="container-fluid p-0">
-          <div className="row">
-            <div className="col d-flex align-items-center justify-content-center overflow-hidden imagem-overlay" style={{height: '300px'}}>
-              <img style={{objectFit: "cover", width: "100%", height: "100%"}} src="../main.png" className="img-cover" alt="Imagem Grande" />
-              <div className="texto-overlay">
-                Seu disco está aqui!
-              </div>
+
+  return (
+    <div>
+      <div className="container-fluid p-0">
+        <div className="row">
+          <div className="col d-flex align-items-center justify-content-center overflow-hidden imagem-overlay" style={{ height: '300px' }}>
+            <img style={{ objectFit: "cover", width: "100%", height: "100%" }} src="../main.png" className="img-cover" alt="Imagem Grande" />
+            <div className="texto-overlay">
+              Seu disco está aqui!
             </div>
           </div>
         </div>
-        <div className="row text-center">
-          <h1 className="h3 fw-normal mt-4"><b>Melhores avaliados</b></h1> {/* Adicionei a classe "mt-4" aqui */}
-        </div>
-        <div className="container-fluid mt-4 ">
-          <div className="row justify-content-center">
-            {listaAlbuns}
-          </div>
+      </div>
+      <div className="row text-center">
+        <h1 className="h3 fw-normal mt-4"><b>Melhores avaliados</b></h1> {/* Adicionei a classe "mt-4" aqui */}
+      </div>
+      <div className="container-fluid mt-4 ">
+        <div className="row justify-content-center">
+          {listaAlbuns}
         </div>
       </div>
-    )
-    
-    
+    </div>
+  )
+
+
 }

@@ -9,15 +9,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br">  
-    <head>
-      <link rel="shortcut icon" href="../play.ico" type="image/x-icon" />  
-    </head>    
+    <html lang="pt-br">
+      <head>
+        <link rel="shortcut icon" href="../play.ico" type="image/x-icon" />
+      </head>
       <body>
-      <ClienteProvider>
-        <Titulo />
-        {children}
-      </ClienteProvider>
+        <ClienteProvider>
+          <Titulo />
+          {children}
+        </ClienteProvider>
       </body>
     </html>
   )

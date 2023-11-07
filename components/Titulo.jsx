@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useContext } from "react"
 import { ClienteContext } from "@/contexts/cliente"
 import './font.css'
+import Dropdown from 'react-bootstrap/Dropdown';
+
 export default function Titulo() {
   const { clienteNome, mudaId, mudaNome, clienteIsAdmin } = useContext(ClienteContext)
 
@@ -47,15 +49,23 @@ export default function Titulo() {
         </div>
         <div className="col">
           <h5 className="text-white text-end mx-3">
-            {clienteNome ? <Link style={{ color: 'inherit', textDecoration: 'none' }} href="" onClick={logout}>{clienteNome}</Link> : <Link style={{ color: 'inherit', textDecoration: 'none' }} href="/login">Login</Link>}
-            {
-              clienteNome ?
-                <i class="ms-2 fs-4 bi bi-box-arrow-right" style={{ cursor: 'pointer' }} onClick={logout}></i> :
-                <Link href="/login"><i class="ms-2 fs-4 bi bi-person-fill text-white"></i></Link>
-            }
+            {clienteNome ?
+              <Dropdown>
+                <Dropdown.Toggle className="bg-transparent btn" id="dropdown-basic" style={{ border: 'none', fontSize: '1.25rem', fontWeight: '500' }}>
+                  {clienteNome}‎ ‎
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="" onClick={logout}>Sair</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              :
+              //<Link style={{ color: 'inherit', textDecoration: 'none' }} href="" onClick={logout}>{clienteNome}</Link>
+
+              <Link style={{ color: 'inherit', textDecoration: 'none' }} href="/login">Login</Link>}
           </h5>
         </div>
       </div>
-    </nav>
+    </nav >
   )
 }
