@@ -4,6 +4,9 @@ import Link from "next/link"
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'react-toastify/dist/ReactToastify.css'
 import EditarInfo from "@/components/EditarInfo"
+import NotaModal from "@/components/NotaModal"
+import NotaSeletor from '@/components/NotaSelector';
+
 
 async function getAlbum(id) {
   const response = await fetch("http://localhost:3004/albuns/" + id, {
@@ -29,17 +32,13 @@ export default async function Consulta({ params }) {
           <h2 className="card-title text-center mb-4">Detalhes do álbum</h2>
           <form encType="multipart/form-data">
             <div className="row">
-              <div className="col-sm-4">
+              <div className="col-sm-6">
                 <label htmlFor="titulo" className="form-label">Nome do álbum</label>
                 <input type="text" className="form-control" readOnly defaultValue={album.titulo} />
               </div>
               <div className="col-sm-3">
                 <label htmlFor="artista" className="form-label">Artista</label>
                 <input type="text" className="form-control" id="artista" readOnly defaultValue={album.artista} />
-              </div>
-              <div className="col-sm-2">
-                <label htmlFor="preco" className="form-label">Preço R$</label>
-                <input type="number" step="0.10" className="form-control" id="preco" defaultValue={album.preco} readOnly />
               </div>
               <div className="col-sm-3">
                 <label htmlFor="data" className="form-label">Lançamento:</label>
@@ -49,29 +48,24 @@ export default async function Consulta({ params }) {
 
             <div className="row mt-3">
 
-              <div className="col-sm-4">
+              <div className="col-sm-3">
                 <label htmlFor="genero" className="form-label">Gênero</label>
                 <input type="text" className="form-control" id="artista" readOnly defaultValue={album.genero} />
               </div>
               <div className="col-sm-2">
-                <label htmlFor="nota" className="form-label">Sua nota</label>
-                <select className="form-select" id="nota" defaultValue={album.nota}>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-
-                </select>
+                <label htmlFor="preco" className="form-label">Preço R$</label>
+                <input type="number" step="0.10" className="form-control" id="preco" defaultValue={album.preco} readOnly />
               </div>
-              <div className="col-sm-6">
+              <div className="col-sm-3">
+                <NotaSeletor album={album} />
+              </div>
+              <div className="col-sm-3">
                 <p className="form-label">Capa do álbum</p>
                 <img src={album.capa} id="capa" alt={`Capa do álbum ${album.capa}`} width={200} height={200} className=" d-block mb-4 mx-auto" />
               </div>
             </div>
 
 
-            <input type="submit" value="Enviar" className="btn btn-success me-3 justify-content-end" />
             <EditarInfo album={album} />
 
           </form>
