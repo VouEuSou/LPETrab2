@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Card } from 'react-bootstrap';
 import { useContext } from "react"
 import { ClienteContext } from "@/contexts/cliente"
-import Estrelas from "./Estrelas"
+import Coracoes from "./Coracoes"
 
 export default function ItemLista(props) {
     const { clienteId } = useContext(ClienteContext)
@@ -58,7 +58,7 @@ export default function ItemLista(props) {
                                 Nota: {nota}
                             </Card.Text>
                             <Card.Text style={{ marginBottom: '0.0rem', paddingBottom: '0.2rem' }}>
-                                <Estrelas soma={props.album.soma} num={props.album.num} />
+                                <Coracoes soma={props.album.soma} num={props.album.num} />
                             </Card.Text>
                             <Card.Text style={{ fontWeight: 'bold', fontSize: 22 }}>
                                 Preço: R$ {props.album.preco},00
@@ -75,11 +75,8 @@ export default function ItemLista(props) {
                         <Card.Text style={{ marginBottom: '0.2rem' }}>
                             Gênero: {props.album.genero}
                         </Card.Text>
-                        <Card.Text style={{ marginBottom: '0.2rem' }}>
-                            Nota: {nota}
-                        </Card.Text>
                         <Card.Text style={{ marginBottom: '0.0rem', paddingBottom: '0.2rem' }}>
-                            <Estrelas soma={props.album.soma} num={props.album.num} />
+                            <Coracoes soma={props.album.soma} num={props.album.num} />
                         </Card.Text>
                         <Card.Text style={{ fontWeight: 'bold', fontSize: 22 }}>
                             Preço: R$ {props.album.preco},00

@@ -4,17 +4,19 @@ import { useContext } from "react"
 import { ClienteContext } from "@/contexts/cliente"
 import './font.css'
 import Dropdown from 'react-bootstrap/Dropdown';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export default function Titulo() {
   const { clienteNome, mudaId, mudaNome, clienteIsAdmin } = useContext(ClienteContext)
 
   function logout() {
-    if (confirm("Confirma a saída do sistema? ")) {
-      mudaId(null)
-      mudaNome("")
-      localStorage.removeItem("cliente_logado")
-    }
+    toast.warning("Logout realizado")
+    mudaId(null)
+    mudaNome("")
+    localStorage.removeItem("cliente_logado")
   }
+
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -65,7 +67,19 @@ export default function Titulo() {
               <Link style={{ color: 'inherit', textDecoration: 'none' }} href="/login">Login</Link>}
           </h5>
         </div>
-      </div>
+      </div>`
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />`
     </nav >
   )
 }

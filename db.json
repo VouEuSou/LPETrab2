@@ -7,6 +7,7 @@
       "data": "2009-02",
       "artista": "Lady Gaga",
       "capa": "https://m.media-amazon.com/images/I/71VJwUwpOzL._UF1000,1000_QL80_.jpg",
+      "staffpicks": true,
       "soma": 15,
       "id": 8,
       "num": 3
@@ -18,6 +19,7 @@
       "data": "2021-12",
       "genero": "Pop",
       "capa": "https://rollingstone.uol.com.br/media/uploads/capa_olivia_rodrigo_completa_sour.jpeg",
+      "staffpicks": true,
       "soma": 40,
       "id": 9,
       "num": 11
@@ -30,6 +32,7 @@
       "genero": "Pop",
       "capa": "https://s2-g1.glbimg.com/SU_BSXqpPmQUSzzE4y_OagBC-3o=/0x0:1400x1400/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/z/s/FSHmXFTV2xJoT2Hz4gNA/lover-taylor.jpg",
       "soma": 55,
+      "staffpicks": true,
       "id": 11,
       "num": 12
     },
@@ -41,19 +44,21 @@
       "artista": "Taylor Swift",
       "capa": "https://e.snmc.io/i/600/s/ac8f877aaa37accc3772908a59b5f4d2/8784356/taylor-swift-fearless-taylors-version-Cover-Art.jpg",
       "soma": 15,
+      "staffpicks": true,
       "id": 12,
       "num": 4
     },
     {
       "titulo": "Montero",
-      "artista": "Lil Nas X",
+      "genero": "Hip-Hop",
       "preco": "40",
       "data": "2021-09",
-      "genero": "Hip-Hop",
+      "artista": "Lil Nas X",
       "capa": "https://upload.wikimedia.org/wikipedia/pt/9/9f/Montero_-_Lil_Nas_X.png",
-      "soma": 12,
-      "id": 13,
-      "num": 4
+      "soma": 5,
+      "num": 2,
+      "staffpicks": false,
+      "id": 13
     },
     {
       "titulo": "Happier Than Ever",
@@ -61,6 +66,7 @@
       "preco": "55",
       "data": "2021-07",
       "genero": "Pop",
+      "staffpicks": false,
       "capa": "https://upload.wikimedia.org/wikipedia/pt/e/e8/Happier_Than_Ever_%28%C3%A1lbum%29_-_Billie_Eilish.png",
       "soma": 14,
       "id": 15,
@@ -72,6 +78,7 @@
       "preco": "48",
       "data": "2020-03",
       "genero": "Pop",
+      "staffpicks": false,
       "capa": "https://upload.wikimedia.org/wikipedia/pt/e/ed/Dua_Lipa_-_Hallucinate.png",
       "soma": 10,
       "id": 17,
@@ -79,14 +86,15 @@
     },
     {
       "titulo": "Justice",
-      "artista": "Justin Bieber",
+      "genero": "Pop",
       "preco": "60",
       "data": "2021-03",
-      "genero": "Pop",
+      "artista": "Justin Bieber",
       "capa": "https://upload.wikimedia.org/wikipedia/pt/0/08/Justin_Bieber_-_Justice.png",
       "soma": 11,
-      "id": 18,
-      "num": 4
+      "num": 4,
+      "staffpicks": false,
+      "id": 18
     },
     {
       "titulo": "Solar Power",
@@ -94,6 +102,7 @@
       "preco": "65",
       "data": "2021-08",
       "genero": "Pop",
+      "staffpicks": false,
       "capa": "https://upload.wikimedia.org/wikipedia/pt/f/f2/Lorde_solarpower.png",
       "soma": 20,
       "id": 19,
@@ -105,6 +114,7 @@
       "preco": "50",
       "data": "2021-03",
       "genero": "Indie",
+      "staffpicks": false,
       "capa": "https://upload.wikimedia.org/wikipedia/pt/d/db/Chemtrails_over_the_Country_Club_-_Lana_Del_Rey.png",
       "soma": 17,
       "id": 20,
@@ -117,19 +127,21 @@
       "data": "2023-10",
       "artista": "Taylor Swift",
       "capa": "https://driftrecords.com/cdn/shop/files/0-2_2367bf13-5fb1-4ca6-a2e7-1f9ecfeb3ec0.jpg?v=1695392393",
-      "id": 0,
+      "soma": 25,
       "num": 8,
-      "soma": 25
+      "staffpicks": true,
+      "id": 0
     },
     {
       "titulo": "Vessel",
-      "artista": "Twenty One Pilots",
+      "genero": "Alternativo",
       "preco": "40",
       "data": "2013-01",
-      "genero": "Alternativo",
+      "artista": "Twenty One Pilots",
       "capa": "https://www.golddisk.ru/goods_img/89/89019.jpg",
       "soma": 5,
       "num": 1,
+      "staffpicks": true,
       "id": 21
     }
   ],
@@ -177,6 +189,13 @@
       "email": "pedro@gmail.com",
       "senha": "pedro123",
       "isAdmin": false
+    },
+    {
+      "nome": "William",
+      "email": "william@gmail.com",
+      "senha": "will",
+      "isAdmin": false,
+      "id": 3
     }
   ]
 }

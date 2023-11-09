@@ -29,12 +29,13 @@ export default function Alteracao() {
         titulo: dado.titulo,
         genero: dado.genero,
         preco: dado.preco,
-        duracao: dado.duracao,
         data: dado.data,
         classif: dado.classif,
         artista: dado.artista,
         capa: dado.capa,
-        sinopse: dado.sinopse
+        soma: dado.soma,
+        num: dado.num,
+        staffpicks: dado.staffpicks
       })
     }
     getAlbum()
@@ -113,11 +114,17 @@ export default function Alteracao() {
                   ))}
                 </select>
               </div>
+
               <div className="col-sm-8">
                 <label htmlFor="capa" className="form-label">Imagem da capa</label>
                 <input type="url" className="form-control" id="capa" {...register("capa")} required />
               </div>
             </div>
+            <div class=" mx-2 mt-3 form-check d-flex justify-content-end form-switch">
+              <label htmlFor="staffpicks" style={{ marginRight: '50px' }} class="form-check-label" for="flexSwitchCheckDefault">Aparecer na Landing</label>
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" {...register("staffpicks")} />
+            </div>
+
 
             <div className="col-sm-3 mt-4">
               <input type="button" value="Excluir álbum" className="btn btn-danger float-start" onClick={() => excluiAlbum(params.id)} />
