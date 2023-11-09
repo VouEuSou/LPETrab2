@@ -7,10 +7,10 @@
       "data": "2009-02",
       "artista": "Lady Gaga",
       "capa": "https://m.media-amazon.com/images/I/71VJwUwpOzL._UF1000,1000_QL80_.jpg",
-      "staffpicks": true,
       "soma": 26,
-      "id": 8,
-      "num": 6
+      "num": 6,
+      "staffpicks": false,
+      "id": 8
     },
     {
       "titulo": "SOUR",
@@ -143,6 +143,78 @@
       "num": 1,
       "staffpicks": true,
       "id": 21
+    },
+    {
+      "titulo": "Portals",
+      "genero": "Pop",
+      "preco": "55",
+      "data": "2023-03",
+      "artista": "Melanie Martinez",
+      "capa": "https://m.media-amazon.com/images/I/81fmr6cplSL._UF1000,1000_QL80_.jpg",
+      "soma": 13,
+      "num": 3,
+      "staffpicks": true,
+      "id": 22
+    },
+    {
+      "titulo": "Erro Gostoso",
+      "genero": "Pagode",
+      "preco": "10",
+      "data": "2023-01",
+      "artista": "Simone Mendes",
+      "capa": "https://i.scdn.co/image/ab67616d0000b27336d244b6e73427673cf37d80",
+      "soma": 7,
+      "num": 2,
+      "staffpicks": 0,
+      "id": 23
+    },
+    {
+      "titulo": "How I'm Feeling Now",
+      "artista": "Charli XCX",
+      "preco": "47",
+      "data": "2020-05",
+      "genero": "Eletrônica",
+      "capa": "https://media.pitchfork.com/photos/5ebeaae57408de6d52fb64ae/master/pass/How%20I'm%20Feeling%20Now_Charli%20XCX.jpg",
+      "soma": 4,
+      "num": 1,
+      "staffpicks": 0,
+      "id": 24
+    },
+    {
+      "titulo": "SOS",
+      "artista": "SZA",
+      "preco": "50",
+      "data": "2022-12",
+      "genero": "Alternativo",
+      "capa": "https://musicainstantanea.com.br/wp-content/uploads/2022/12/SZA-SOS.jpg",
+      "soma": 11,
+      "num": 3,
+      "staffpicks": 0,
+      "id": 25
+    },
+    {
+      "titulo": "I Like It When You Sleep, for You Are So Beautiful yet So Unaware of It",
+      "artista": "The 1975",
+      "preco": "70",
+      "data": "2016-02",
+      "genero": "Alternativo",
+      "capa": "https://upload.wikimedia.org/wikipedia/pt/c/c3/I_Like_It_When_You_Sleep%2C_for_You_Are_So_Beautiful_yet_So_Unaware_of_It.png",
+      "soma": 24,
+      "num": 5,
+      "staffpicks": 0,
+      "id": 26
+    },
+    {
+      "titulo": "Ye",
+      "genero": "Rap",
+      "preco": "41",
+      "data": "2018-06",
+      "artista": "Kanye West",
+      "capa": "https://upload.wikimedia.org/wikipedia/pt/7/72/Ye_-_Kanye_West.jpg",
+      "soma": 14,
+      "num": 4,
+      "staffpicks": 0,
+      "id": 27
     }
   ],
   "generos": [
@@ -171,7 +243,15 @@
       "id": 6
     },
     {
+      "nome": "Pagode",
+      "id": 6
+    },
+    {
       "nome": "Indie",
+      "id": 8
+    },
+    {
+      "nome": "Rap",
       "id": 8
     }
   ],

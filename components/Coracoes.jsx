@@ -27,6 +27,11 @@ export default function Coracoes({ soma, num }) {
       <i className="bi bi-heart"></i>)
   }
 
+  if (coracoes.length < 5) {
+    coracoes.push(
+      <i className="bi bi-heart"></i>)
+  }
+
   return (
     <div className="float-heart fs-5">
       {coracoes}
