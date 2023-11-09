@@ -8,9 +8,9 @@
       "artista": "Lady Gaga",
       "capa": "https://m.media-amazon.com/images/I/71VJwUwpOzL._UF1000,1000_QL80_.jpg",
       "staffpicks": true,
-      "soma": 15,
+      "soma": 26,
       "id": 8,
-      "num": 3
+      "num": 6
     },
     {
       "titulo": "SOUR",
@@ -31,10 +31,10 @@
       "data": "2019-08",
       "genero": "Pop",
       "capa": "https://s2-g1.glbimg.com/SU_BSXqpPmQUSzzE4y_OagBC-3o=/0x0:1400x1400/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/z/s/FSHmXFTV2xJoT2Hz4gNA/lover-taylor.jpg",
-      "soma": 55,
+      "soma": 66,
       "staffpicks": true,
       "id": 11,
-      "num": 12
+      "num": 15
     },
     {
       "titulo": "Fearless",
@@ -127,8 +127,8 @@
       "data": "2023-10",
       "artista": "Taylor Swift",
       "capa": "https://driftrecords.com/cdn/shop/files/0-2_2367bf13-5fb1-4ca6-a2e7-1f9ecfeb3ec0.jpg?v=1695392393",
-      "soma": 25,
-      "num": 8,
+      "soma": 49,
+      "num": 13,
       "staffpicks": true,
       "id": 0
     },
@@ -178,22 +178,22 @@
   "clientes": [
     {
       "id": 1,
-      "nome": "Ana Maria",
-      "email": "ana@gmail.com",
-      "senha": "ana123",
+      "nome": "Edécio",
+      "email": "edecio@gmail.com",
+      "senha": "avenida",
       "isAdmin": true
     },
     {
       "id": 2,
-      "nome": "Pedro Costa",
-      "email": "pedro@gmail.com",
-      "senha": "pedro123",
+      "nome": "Gladimau",
+      "email": "gladi@gmail.com",
+      "senha": "mysql",
       "isAdmin": false
     },
     {
       "nome": "William",
       "email": "william@gmail.com",
-      "senha": "will",
+      "senha": "voueusou",
       "isAdmin": false,
       "id": 3
     }

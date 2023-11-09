@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Link from "next/link"
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'react-toastify/dist/ReactToastify.css'
+import './modificar.css'
 
 export default function Alteracao() {
   const params = useParams()
