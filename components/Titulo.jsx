@@ -56,9 +56,9 @@ export default function Titulo() {
                 <Dropdown.Toggle className="bg-transparent btn" id="dropdown-basic" style={{ border: 'none', fontSize: '1.25rem', fontWeight: '500' }}>
                   {clienteNome}‎ ‎
                 </Dropdown.Toggle>
-
                 <Dropdown.Menu>
-                  <Dropdown.Item href="" onClick={logout}>Sair</Dropdown.Item>
+                  <Dropdown.Item className="mb-2" href="" onClick={logout}>Sair</Dropdown.Item>
+                  <Dropdown.Item href="/passwordreset" >Alterar senha</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
               :

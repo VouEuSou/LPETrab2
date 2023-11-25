@@ -1,35 +1,44 @@
-export default function Coracoes({ soma, num }) {
-  const media = parseFloat(soma / num)
+export default function Coracoes({ media }) {
 
   const coracoes = []
 
-  for (let i = 1; i <= parseInt(media); i++) {
-    coracoes.push(
-      <i className="bi bi-heart-fill"></i>)
+  if (media === 0) {
+    coracoes.push(<i className="bi bi-heart"></i>)
+    coracoes.push(<i className="bi bi-heart"></i>)
+    coracoes.push(<i className="bi bi-heart"></i>)
+    coracoes.push(<i className="bi bi-heart"></i>)
+    coracoes.push(<i className="bi bi-heart"></i>)
   }
+  else {
 
-  const decimos = media % 1
-  if (decimos >= 0.25 && decimos <= 0.75) {
-    coracoes.push(
-      <i className="bi bi-heart-half"></i>
-    )
-  } else if (decimos > 0.75) {
-    coracoes.push(
-      <i className="bi bi-heart-fill"></i>)
-  }
-  for (let i = 0; i < 4 - parseInt(media); i++) {
-    coracoes.push(
-      <i className="bi bi-heart"></i>)
-  }
+    for (let i = 1; i <= parseInt(media); i++) {
+      coracoes.push(
+        <i className="bi bi-heart-fill"></i>)
+    }
 
-  if (media === 1) {
-    coracoes.push(
-      <i className="bi bi-heart"></i>)
-  }
+    const decimos = media % 1
+    if (decimos >= 0.25 && decimos <= 0.75) {
+      coracoes.push(
+        <i className="bi bi-heart-half"></i>
+      )
+    } else if (decimos > 0.75) {
+      coracoes.push(
+        <i className="bi bi-heart-fill"></i>)
+    }
+    for (let i = 0; i < 4 - parseInt(media); i++) {
+      coracoes.push(
+        <i className="bi bi-heart"></i>)
+    }
 
-  if (coracoes.length < 5) {
-    coracoes.push(
-      <i className="bi bi-heart"></i>)
+    if (media === 1) {
+      coracoes.push(
+        <i className="bi bi-heart"></i>)
+    }
+
+    if (coracoes.length < 5) {
+      coracoes.push(
+        <i className="bi bi-heart"></i>)
+    }
   }
 
   return (

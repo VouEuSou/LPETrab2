@@ -14,7 +14,7 @@ export default function Cadastro() {
     async function registerUser(data) {
         const album = await fetch("http://localhost:3000/usuarios",
             {
-                method: "POST",
+                method: "PUT",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({ ...data })
             },

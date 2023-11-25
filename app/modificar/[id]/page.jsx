@@ -10,52 +10,35 @@ import './modificar.css'
 
 export default function Alteracao() {
   const params = useParams()
-  const [generos, setGeneros] = useState([]);
   const { register, handleSubmit, reset } = useForm()
-
-  useEffect(() => {
-    async function fetchGeneros() {
-      const dados = await getGeneros();
-      setGeneros(dados);
-    }
-    fetchGeneros();
-  }, []);;
+  const usuario = JSON.parse(localStorage.getItem("cliente_logado"))
 
 
   useEffect(() => {
     async function getAlbum() {
-      const response = await fetch("http://localhost:3004/albuns/" + params.id)
+      const response = await fetch("http://localhost:3000/album/" + params.id)
       const dado = await response.json()
       reset({
-        titulo: dado.titulo,
+        nome: dado.nome,
         genero: dado.genero,
         preco: dado.preco,
         data: dado.data,
-        classif: dado.classif,
         artista: dado.artista,
         capa: dado.capa,
-        soma: dado.soma,
-        num: dado.num,
         staffpicks: dado.staffpicks
       })
     }
     getAlbum()
-  }, [])
+  }, [params.id, reset])
 
-  async function getGeneros() {
-    const response = await fetch("http://localhost:3004/generos/", {
-      cache: "no-store" // Desativa o cache (ou deveria MALDITO EDGE >:( ))
-    });
-    const dado = await response.json();
-    return dado;
-  }
 
   async function alteraDados(data) {
-    const response = await fetch("http://localhost:3004/albuns/" + params.id,
+    console.log(data)
+    const response = await fetch("http://localhost:3000/album/edit/" + params.id,
       {
         method: "PUT",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ ...data })
+        headers: { "Content-type": "application/json", "Authorization": `${usuario.token}` },
+        body: JSON.stringify({ ...data, usuario_id: `${usuario.id}` })
       },
     )
     if (response.status == 200) {
@@ -66,8 +49,9 @@ export default function Alteracao() {
   }
 
   async function excluiAlbum(id) {
-    const response = await fetch("http://localhost:3004/albuns/" + id, {
-      method: "DELETE"
+    const response = await fetch("http://localhost:3000/album/" + id, {
+      method: "DELETE",
+      headers: { "Content-type": "application/json", "Authorization": `${usuario.token}` }
     })
     if (response.status == 200) {
       toast.warn("O álbum escolhido foi removido!")
@@ -88,8 +72,8 @@ export default function Alteracao() {
           <form encType="multipart/form-data" onSubmit={handleSubmit(alteraDados)}>
             <div className="row">
               <div className="col-sm-4">
-                <label htmlFor="titulo" className="form-label">Nome do álbum</label>
-                <input type="text" className="form-control" id="titulo" {...register("titulo")} required />
+                <label htmlFor="nome" className="form-label">Nome do álbum</label>
+                <input type="text" className="form-control" id="nome" {...register("nome")} required />
               </div>
               <div className="col-sm-3">
                 <label htmlFor="artista" className="form-label">Artista</label>
@@ -109,10 +93,25 @@ export default function Alteracao() {
 
               <div className="col-sm-4">
                 <label htmlFor="genero" className="form-label">Gênero</label>
-                <select className="form-select" {...register("genero")}>
-                  {generos.map(item => (
-                    <option key={item.nome} value={item.nome}>{item.nome}</option>
-                  ))}
+                <select className="form-select" id="genero" {...register("genero")} required>
+                  <option value="Undefined">Selecione um gênero</option>
+                  <option value="Rock">Rock</option>
+                  <option value="Pop">Pop</option>
+                  <option value="Indie">Indie</option>
+                  <option value="Metal">Metal</option>
+                  <option value="Jazz">Jazz</option>
+                  <option value="Blues">Blues</option>
+                  <option value="Rap">Rap</option>
+                  <option value="Funk">Funk</option>
+                  <option value="Sertanejo">Sertanejo</option>
+                  <option value="Samba">Samba</option>
+                  <option value="Pagode">Pagode</option>
+                  <option value="MPB">MPB</option>
+                  <option value="Eletrônica">Eletrônica</option>
+                  <option value="Country">Country</option>
+                  <option value="Reggae">Reggae</option>
+                  <option value="Clássica">Clássica</option>
+                  <option value="Folk">Folk</option>
                 </select>
               </div>
 

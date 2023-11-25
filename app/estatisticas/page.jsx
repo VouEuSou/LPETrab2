@@ -6,7 +6,7 @@ import { Button, Card, Spinner, Tab, Tabs } from "react-bootstrap";
 
 async function getAlbums() {
   try {
-    const response = await fetch("http://localhost:3004/albuns");
+    const response = await fetch("http://localhost:3000/album");
     const dados = await response.json();
     return dados;
   } catch (error) {
@@ -89,7 +89,7 @@ const Charts = () => {
                 <Card.Title style={{ fontWeight: "bold" }}>
                   Total de Álbuns
                 </Card.Title>
-                <Card.Text>{albums.length - 1}</Card.Text>
+                <Card.Text>{albums.length}</Card.Text>
               </Card.Body>
             </Card>
           </div>

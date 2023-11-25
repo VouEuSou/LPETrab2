@@ -8,31 +8,26 @@ import 'react-toastify/dist/ReactToastify.css'
 export default function Cadastro() {
   const [generos, setGeneros] = useState([]);
   const { register, handleSubmit, reset } = useForm({})
-  useEffect(() => {
-    async function fetchGeneros() {
-      const dados = await getGeneros();
-      setGeneros(dados);
-    }
-    fetchGeneros();
-  }, []);;
 
-
-  async function getGeneros() {
-    const response = await fetch("http://localhost:3004/generos/", {
-      cache: "no-store" // Desativa o cache (ou deveria MALDITO EDGE >:( ))
-    });
-    const dado = await response.json();
-    return dado;
+  const onSubmit = (data) => {
+    enviaDados(data, cliente, props.album.id);
+    handleClose()
   }
 
+
+
   async function enviaDados(data) {
-    const dadosComNotaZero = { ...data, soma: 1, num: 1, staffpicks: 0 };
+    const usuario = JSON.parse(localStorage.getItem("cliente_logado"))
+    const userid = toString(usuario.id)
+    const dadosComNotaZero = { ...data, staffpicks: 0, usuario_id: usuario.id };
     console.log(dadosComNotaZero)
-    const album = await fetch("http://localhost:3004/albuns",
+    const album = await fetch("http://localhost:3000/album",
       {
         method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ ...dadosComNotaZero })
+        headers: { "Content-type": "application/json", "Authorization": `${usuario.token}` },
+        body: JSON.stringify({
+          ...data, staffpicks: 0, usuario_id: `${usuario.id}`
+        })
       },
     )
     if (album.status == 201) {
@@ -52,8 +47,8 @@ export default function Cadastro() {
           <form encType="multipart/form-data" onSubmit={handleSubmit(enviaDados)}>
             <div className="row">
               <div className="col-sm-4">
-                <label htmlFor="titulo" className="form-label">Nome do álbum</label>
-                <input type="text" className="form-control" id="titulo" {...register("titulo")} required />
+                <label htmlFor="nome" className="form-label">Nome do álbum</label>
+                <input type="text" className="form-control" id="nome" {...register("nome")} required />
               </div>
               <div className="col-sm-3">
                 <label htmlFor="artista" className="form-label">Artista</label>
@@ -71,10 +66,25 @@ export default function Cadastro() {
             <div className="row mt-3">
               <div className="col-sm-4">
                 <label htmlFor="genero" className="form-label">Gênero</label>
-                <select className="form-select" {...register("genero")}>
-                  {generos.map(item => (
-                    <option key={item.nome} value={item.nome}>{item.nome}</option>
-                  ))}
+                <select className="form-select" id="genero" {...register("genero")} required>
+                  <option value="Undefined">Selecione um gênero</option>
+                  <option value="Rock">Rock</option>
+                  <option value="Pop">Pop</option>
+                  <option value="Indie">Indie</option>
+                  <option value="Metal">Metal</option>
+                  <option value="Jazz">Jazz</option>
+                  <option value="Blues">Blues</option>
+                  <option value="Rap">Rap</option>
+                  <option value="Funk">Funk</option>
+                  <option value="Sertanejo">Sertanejo</option>
+                  <option value="Samba">Samba</option>
+                  <option value="Pagode">Pagode</option>
+                  <option value="MPB">MPB</option>
+                  <option value="Eletrônica">Eletrônica</option>
+                  <option value="Country">Country</option>
+                  <option value="Reggae">Reggae</option>
+                  <option value="Clássica">Clássica</option>
+                  <option value="Folk">Folk</option>
                 </select>
               </div>
               <div className="col-sm-8">

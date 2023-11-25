@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     async function getAlbuns() {
-      const response = await fetch("http://localhost:3004/albuns?staffpicks=true")
+      const response = await fetch("http://localhost:3000/album/picks")
       const dados = await response.json()
       const albunsOrdenados = [...dados].sort((a, b) => (b.soma / b.num) - (a.soma / a.num));
       setAlbuns(albunsOrdenados);

@@ -13,7 +13,7 @@ export default function Listagem() {
 
   useEffect(() => {
     async function getAlbuns() {
-      const response = await fetch("http://localhost:3004/albuns")
+      const response = await fetch("http://localhost:3000/album")
       const dados = await response.json()
       setAlbuns(dados)
       setIsLoading(false)
@@ -32,11 +32,11 @@ export default function Listagem() {
   function BuscaAlbuns(data) {
     const pesquisa = data.pesq.toUpperCase()
     async function getAlbuns() {
-      const response = await fetch("http://localhost:3004/albuns")
+      const response = await fetch("http://localhost:3000/album")
       const dados = await response.json()
 
       const novosDados = dados.filter(album =>
-        album.titulo.toUpperCase().includes(pesquisa) || album.genero.toUpperCase().includes(pesquisa) || album.artista.toUpperCase().includes(pesquisa)
+        album.nome.toUpperCase().includes(pesquisa) || album.genero.toUpperCase().includes(pesquisa) || album.artista.toUpperCase().includes(pesquisa)
       )
       setAlbuns(novosDados)
     }
@@ -49,7 +49,7 @@ export default function Listagem() {
   }
 
   function ordenarPorNome() {
-    const albunsOrdenados = [...albuns].sort((a, b) => a.titulo.localeCompare(b.titulo));
+    const albunsOrdenados = [...albuns].sort((a, b) => a.nome.localeCompare(b.nome));
     setAlbuns(albunsOrdenados);
   }
 
@@ -90,7 +90,7 @@ export default function Listagem() {
 
   function mostraTodos() {
     async function getAlbuns() {
-      const response = await fetch("http://localhost:3004/albuns")
+      const response = await fetch("http://localhost:3000/album")
       const dados = await response.json()
       setAlbuns(dados)
       setIsLoading(false)

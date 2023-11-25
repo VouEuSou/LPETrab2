@@ -12,23 +12,41 @@ import { ToastContainer, toast } from 'react-toastify';
 
 export default function Login() {
   const { register, handleSubmit } = useForm()
-  const { mudaId, mudaNome, mudaIsAdmin } = useContext(ClienteContext)
+  const { mudaId, mudaNome, mudaIsAdmin, mudaToken, mudaEmail } = useContext(ClienteContext)
 
   const router = useRouter()
 
   async function verificaLogin(data) {
     //    console.log(data)
-    const login = `email=${data.email}&senha=${data.senha}`
-    const response = await fetch(`http://localhost:3004/clientes?${login}`)
+    const login = `
+    {
+      "email": "${data.email}",
+      "senha": "${data.senha}"
+    }   
+    `
+    console.log(login)
+    const response = await fetch(`http://localhost:3000/login`,
+      {
+        method: "POST",
+        body: login,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    )
+    console.log(response)
     const cliente = await response.json()
-    if (cliente.length == 0) {
+    if (cliente == "⚠️ Login ou senha inválido") {
       toast.error("Erro... Usuário ou senha incorretos")
     } else {
-      mudaId(cliente[0].id)
-      mudaNome(cliente[0].nome)
-      mudaIsAdmin(cliente[0].isAdmin)
+      console.log(cliente)
+      mudaId(cliente.usuario_id)
+      mudaNome(cliente.usuario_nome)
+      mudaIsAdmin(cliente.usuario_isAdm)
+      mudaToken(cliente.token)
+      mudaEmail(cliente.usuario_email)
 
-      localStorage.setItem("cliente_logado", JSON.stringify({ id: cliente[0].id, nome: cliente[0].nome, isAdmin: cliente[0].isAdmin }))
+      localStorage.setItem("cliente_logado", JSON.stringify({ id: cliente.usuario_id, nome: cliente.usuario_nome, email: cliente.usuario_email, isAdmin: cliente.usuario_isAdm, token: cliente.token }))
       router.push("/listar")
     }
   }
@@ -51,10 +69,17 @@ export default function Login() {
                   required {...register("senha")} />
                 <label style={{ fontFamily: "Road Rage", fontSize: "20px", color: "gray" }} for="floatingPassword">Senha</label>
               </div>
-              <div className="form-check text-end my-4">
-                <Link style={{ textDecoration: "none", color: "#212529" }} href="/novocliente">
-                  Cadastrar-se
-                </Link>
+              <div className="d-flex justify-content-between my-4">
+                <div className="text-start">
+                  <Link style={{ textDecoration: "none", color: "#212529" }} href="/forgot">
+                    Esqueceu sua senha?
+                  </Link>
+                </div>
+                <div className="text-end">
+                  <Link style={{ textDecoration: "none", color: "#212529" }} href="/cadastroUser">
+                    Cadastrar-se
+                  </Link>
+                </div>
               </div>
               <button className="btn btn-dark w-100 py-2 mb-3" type="submit">Entrar</button>
             </form>

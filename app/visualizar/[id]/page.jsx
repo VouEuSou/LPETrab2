@@ -9,7 +9,7 @@ import NotaSeletor from '@/components/NotaSelector';
 
 
 async function getAlbum(id) {
-  const response = await fetch("http://localhost:3004/albuns/" + id, {
+  const response = await fetch("http://localhost:3000/album/" + id, {
     cache: "no-store" // Desativa o cache (ou deveria MALDITO EDGE >:( ))
   });
   const dado = await response.json();
@@ -17,9 +17,13 @@ async function getAlbum(id) {
 }
 
 
+
+
 export default async function Consulta({ params }) {
 
   const album = await getAlbum(params.id)
+
+
 
 
   return (
@@ -35,7 +39,7 @@ export default async function Consulta({ params }) {
             <div className="row">
               <div className="col-sm-6">
                 <label htmlFor="titulo" className="form-label">Nome do álbum</label>
-                <input type="text" className="form-control" readOnly defaultValue={album.titulo} />
+                <input type="text" className="form-control" readOnly defaultValue={album.nome} />
               </div>
               <div className="col-sm-3">
                 <label htmlFor="artista" className="form-label">Artista</label>
@@ -58,20 +62,23 @@ export default async function Consulta({ params }) {
                 <input type="number" step="0.10" className="form-control" id="preco" defaultValue={album.preco} readOnly />
               </div>
               <div className="col-sm-3">
-                <NotaSeletor album={album} />
+                <label htmlFor="nota" className="form-label">Nota</label>
+                <input type="number" step="0.10" className="form-control" id="nota" defaultValue={album.media_notas} readOnly />
               </div>
               <div className="col-sm-3">
                 <p className="form-label">Capa do álbum</p>
                 <img src={album.capa} id="capa" alt={`Capa do álbum ${album.capa}`} width={200} height={200} className=" d-block mb-4 mx-auto" />
               </div>
             </div>
-
-
-
-
           </form>
+          <div className="row">
+            <div className="col-sm-12">
+              <NotaModal album={album} />
+            </div>
+          </div>
         </div>
       </div>
+      <h1 className="h3 fw-normal  mt-4"><b>Comentários</b></h1>
       <ToastContainer
         position="bottom-right"
         autoClose={5000}

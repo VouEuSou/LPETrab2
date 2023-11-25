@@ -7,7 +7,6 @@ import Coracoes from "./Coracoes"
 
 export default function ItemLista(props) {
     const { clienteId } = useContext(ClienteContext)
-    const nota = (props.album.soma / props.album.num).toFixed(1)
 
     return (
         <div className="col-md-2 mb-4">
@@ -18,7 +17,7 @@ export default function ItemLista(props) {
                             <Card.Img
                                 variant="top"
                                 src={props.album.capa}
-                                alt={`${props.album.titulo}`}
+                                alt={`${props.album.nome}`}
                                 style={{
                                     maxWidth: '300px',
                                     margin: 'auto',
@@ -34,7 +33,7 @@ export default function ItemLista(props) {
                         <Card.Img
                             variant="top"
                             src={props.album.capa}
-                            alt={`${props.album.titulo}`}
+                            alt={`${props.album.nome}`}
                             style={{
                                 maxWidth: '300px',
                                 margin: 'auto',
@@ -47,7 +46,7 @@ export default function ItemLista(props) {
                 {clienteId &&
                     <Link style={{ color: 'inherit', textDecoration: 'none' }} href={`visualizar/${props.album.id}`}>
                         <Card.Body>
-                            <Card.Title style={{ marginBottom: '1rem', fontSize: 27 }}>{props.album.titulo}</Card.Title>
+                            <Card.Title style={{ marginBottom: '1rem', fontSize: 27 }}>{props.album.nome}</Card.Title>
                             <Card.Text style={{ marginBottom: '0.2rem' }}>
                                 Artista: {props.album.artista}
                             </Card.Text>
@@ -55,10 +54,10 @@ export default function ItemLista(props) {
                                 Gênero: {props.album.genero}
                             </Card.Text>
                             <Card.Text style={{ marginBottom: '0.2rem' }}>
-                                Nota: {nota}
+                                Nota: {props.album.media_notas}
                             </Card.Text>
                             <Card.Text style={{ marginBottom: '0.0rem', paddingBottom: '0.2rem' }}>
-                                <Coracoes soma={props.album.soma} num={props.album.num} />
+                                <Coracoes media={props.album.media_notas} />
                             </Card.Text>
                             <Card.Text style={{ fontWeight: 'bold', fontSize: 22 }}>
                                 Preço: R$ {props.album.preco},00
@@ -68,7 +67,7 @@ export default function ItemLista(props) {
 
                 {!clienteId &&
                     <Card.Body>
-                        <Card.Title style={{ marginBottom: '1rem', fontSize: 27 }}>{props.album.titulo}</Card.Title>
+                        <Card.Title style={{ marginBottom: '1rem', fontSize: 27 }}>{props.album.nome}</Card.Title>
                         <Card.Text style={{ marginBottom: '0.2rem' }}>
                             Artista: {props.album.artista}
                         </Card.Text>
@@ -76,7 +75,7 @@ export default function ItemLista(props) {
                             Gênero: {props.album.genero}
                         </Card.Text>
                         <Card.Text style={{ marginBottom: '0.0rem', paddingBottom: '0.2rem' }}>
-                            <Coracoes soma={props.album.soma} num={props.album.num} />
+                            <Coracoes media={props.album.media_notas} />
                         </Card.Text>
                         <Card.Text style={{ fontWeight: 'bold', fontSize: 22 }}>
                             Preço: R$ {props.album.preco},00
