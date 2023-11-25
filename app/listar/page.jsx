@@ -86,6 +86,7 @@ export default function Listagem() {
 
   useEffect(() => {
     ordenarAlbuns();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [opcaoOrdenacao]);
 
   function mostraTodos() {

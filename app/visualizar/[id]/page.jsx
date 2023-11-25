@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'react-toastify/dist/ReactToastify.css'
 import EditarInfo from "@/components/EditarInfo"
 import NotaModal from "@/components/NotaModal"
-import NotaSeletor from '@/components/NotaSelector';
+import AvaliacoesLista from "@/components/AvaliacoesLista"
 
 
 async function getAlbum(id) {
@@ -18,11 +18,9 @@ async function getAlbum(id) {
 
 
 
-
 export default async function Consulta({ params }) {
 
   const album = await getAlbum(params.id)
-
 
 
 
@@ -37,7 +35,7 @@ export default async function Consulta({ params }) {
           <h2 className="card-title text-center mb-4">Detalhes do álbum</h2>
           <form encType="multipart/form-data">
             <div className="row">
-              <div className="col-sm-6">
+              <div className="col-sm-5">
                 <label htmlFor="titulo" className="form-label">Nome do álbum</label>
                 <input type="text" className="form-control" readOnly defaultValue={album.nome} />
               </div>
@@ -45,7 +43,7 @@ export default async function Consulta({ params }) {
                 <label htmlFor="artista" className="form-label">Artista</label>
                 <input type="text" className="form-control" id="artista" readOnly defaultValue={album.artista} />
               </div>
-              <div className="col-sm-3">
+              <div className="col-sm-4">
                 <label htmlFor="data" className="form-label">Lançamento:</label>
                 <input type="month" className="form-control" id="data" defaultValue={album.data} readOnly />
               </div>
@@ -78,7 +76,10 @@ export default async function Consulta({ params }) {
           </div>
         </div>
       </div>
-      <h1 className="h3 fw-normal  mt-4"><b>Comentários</b></h1>
+      <div className="row">
+        <AvaliacoesLista avaliacao={params.id} />
+      </div>
+
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
