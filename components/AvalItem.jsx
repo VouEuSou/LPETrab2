@@ -2,9 +2,16 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Link from 'next/link';
 import { Card } from 'react-bootstrap';
 import Coracoes from "./Coracoes"
+import React, { useState } from 'react';
+import DeleteAvalModal from './DeleteAvalModal';
+import Button from 'react-bootstrap/Button';
+
 
 export default function ItemLista(props) {
     const usuario = JSON.parse(localStorage.getItem("cliente_logado"))
+    const [showModal, setShowModal] = useState(false);
+    const handleShowModal = () => setShowModal(true);
+    const handleHideModal = () => setShowModal(false);
 
     return (
         <div style={{ maxWidth: "800px" }} className="card mx-auto mb-3">
@@ -18,16 +25,12 @@ export default function ItemLista(props) {
                         <div>
                             <Coracoes media={props.avaliacao.nota} />
                             {usuario.isAdmin &&
-                                <div className="text-end">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
-                                    </svg>
-                                </div>
+                                <DeleteAvalModal avaliacao={props.avaliacao} />
                             }
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

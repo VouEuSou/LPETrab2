@@ -72,7 +72,7 @@ const Charts = () => {
   if (isLoading) {
     return (
       <div className="container mt-4">
-        <h2 className="text-center mb-4">Gráfico de Preços</h2>
+        <h2 className="text-center mb-4">Dados dos álbuns</h2>
         <Spinner animation="border" role="status"></Spinner>
       </div>
     );
@@ -80,7 +80,7 @@ const Charts = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="text-center mb-4">Gráfico de Preços</h2>
+      <h2 className="text-center mb-4">Dados dos álbuns</h2>
       <div className="container text-center mb-4">
         <div className="row">
           <div className="col">

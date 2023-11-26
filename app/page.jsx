@@ -12,7 +12,7 @@ export default function Home() {
     async function getAlbuns() {
       const response = await fetch("http://localhost:3000/album/picks")
       const dados = await response.json()
-      const albunsOrdenados = [...dados].sort((a, b) => (b.soma / b.num) - (a.soma / a.num));
+      const albunsOrdenados = [...dados].sort((a, b) => (b.total_notas / b.qtde_notas) - (a.total_notas / a.qtde_notas));
       setAlbuns(albunsOrdenados);
     }
     getAlbuns()

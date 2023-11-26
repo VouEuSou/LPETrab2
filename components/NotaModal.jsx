@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form"
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { ToastContainer, toast } from 'react-toastify';
 import { useContext } from "react"
 import { ClienteContext } from "@/contexts/cliente"
+
 
 async function enviaDados(data, cliente, albumId) {
     const dados = {
@@ -23,9 +25,10 @@ async function enviaDados(data, cliente, albumId) {
         },
     )
     if (album.status == 201) {
-        alert("Ok! Avaliação cadastrada com sucesso")
+        toast.success("Avaliação cadastrada com sucesso")
+        window.location.reload()
     } else {
-        alert("Erro... Não foi possível concluir o cadastro")
+        toast.error("Não foi possível concluir o cadastro")
     }
 }
 export default function ModalAvaliacao(props) {
@@ -68,6 +71,18 @@ export default function ModalAvaliacao(props) {
                     </form>
                 </Modal.Body>
             </Modal>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
         </span>
     )
 }
