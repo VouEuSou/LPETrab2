@@ -5,9 +5,10 @@ import { useForm } from "react-hook-form";
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer, toast } from 'react-toastify';
 import { Card } from 'react-bootstrap';
-import "./cadastro.css"
+import "./reset.css"
 
 
+const usuario = JSON.parse(localStorage.getItem("cliente_logado"))
 export default function Cadastro() {
     const { register, handleSubmit, reset } = useForm({})
 
@@ -19,20 +20,11 @@ export default function Cadastro() {
                 body: JSON.stringify({ ...data })
             },
         )
-        if (album.status == 201) {
-            toast.success("Cadastro realizado com sucesso")
+        if (album.status == 200) {
+            toast.success("Senha atualizada com sucesso!")
             reset()
         } else {
-            console.log(album.status)
-            if (album.status == 405) {
-                toast.error("⚠️ Sua senha precisa de no mínimo 10 caracteres, sendo minúsculas, maiúsculas, números e símbolos")
-            } else if (album.status == 404) {
-                toast.error("⚠️ Dados inválidos")
-            } else if (album.status == 410) {
-                toast.error("⚠️ E-mail já cadastrado")
-            } else {
-                toast.error(`${album.status.msg}`)
-            }
+            toast.error("Erro ao atualizar senha")
         }
     }
 
@@ -42,27 +34,22 @@ export default function Cadastro() {
                 <Card.Body>
                     <Card.Text>
                         <form onSubmit={handleSubmit(registerUser)}>
-                            <h2 style={{ fontFamily: "Road Rage", color: "black", fontSize: "70px" }} className="h3 mb-3 fw-normal my-2 mb-5 text-center">Cadastrar cliente</h2>
+                            <h2 style={{ fontFamily: "Road Rage", color: "black", fontSize: "70px" }} className="h3 mb-3 fw-normal my-2 mb-5 text-center">Alterar sua senha</h2>
 
                             <div className="form-floating">
-                                <input type="nome" className="form-control" id="floatingNome" placeholder="Nome"
-                                    required {...register("nome")} />
-                                <label style={{ fontFamily: "Road Rage", fontSize: "20px", color: "gray" }} for="floatingNome">Nome</label>
-                            </div>
-                            <div className="form-floating mt-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
+                                <input type="email" className="form-control" id="floatingInput" placeholder="email" defaultValue={usuario.email} readOnly
                                     required {...register("email")} />
-                                <label style={{ fontFamily: "Road Rage", fontSize: "20px", color: "gray" }} for="floatingInput">E-mail</label>
+                                <label style={{ fontFamily: "Road Rage", fontSize: "20px", color: "gray" }} for="floatingNome">E-mail</label>
                             </div>
                             <div className="form-floating mt-3">
                                 <input type="password" className="form-control" id="floatingPassword" placeholder="Password"
                                     required {...register("senha")} />
                                 <label style={{ fontFamily: "Road Rage", fontSize: "20px", color: "gray" }} for="floatingPassword">Senha</label>
                             </div>
-                            <div className="form-check text-end my-4">
-                                <Link style={{ textDecoration: "none", color: "#212529" }} href="/login">
-                                    Já cadastrado? Faça login
-                                </Link>
+                            <div className="form-floating mt-3 mb-5">
+                                <input type="password" className="form-control" id="floatingPassword" placeholder="Password"
+                                    required {...register("novaSenha")} />
+                                <label style={{ fontFamily: "Road Rage", fontSize: "20px", color: "gray" }} for="floatingPassword">Nova Senha</label>
                             </div>
                             <button className="btn btn-dark w-100 py-2 mb-3" type="submit">Cadastrar</button>
                         </form>
