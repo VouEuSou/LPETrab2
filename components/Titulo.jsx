@@ -40,10 +40,20 @@ export default function Titulo() {
             </li>
             {
               clienteIsAdmin ?
-                <><li className="nav-item">
-                  <Link className="nav-link" href="/cadastro">Cadastro</Link>
-                </li><li className="nav-item">
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" className="bi bi-dot align-self-center" viewBox="0 0 16 16">
+                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+                  </svg>
+                  <li className="nav-item">
+                    <Link className="nav-link" href="/cadastro">Cadastro</Link>
+                  </li><li className="nav-item">
                     <Link className="nav-link" href="/estatisticas">Estatísticas</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" href="/avaliacoes">Avaliações</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" href="/clientes">Clientes</Link>
                   </li></>
                 : null
             }

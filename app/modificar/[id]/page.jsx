@@ -120,9 +120,9 @@ export default function Alteracao() {
                 <input type="url" className="form-control" id="capa" {...register("capa")} required />
               </div>
             </div>
-            <div class=" mx-2 mt-3 form-check d-flex justify-content-end form-switch">
-              <label htmlFor="staffpicks" style={{ marginRight: '50px' }} class="form-check-label" for="flexSwitchCheckDefault">Aparecer na Landing</label>
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" {...register("staffpicks")} />
+            <div className=" mx-2 mt-3 form-check d-flex justify-content-end form-switch">
+              <label htmlFor="staffpicks" style={{ marginRight: '50px' }} className="form-check-label" for="flexSwitchCheckDefault">Aparecer na Landing</label>
+              <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" {...register("staffpicks")} />
             </div>
 
 

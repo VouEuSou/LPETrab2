@@ -37,7 +37,7 @@ export default function Avaliacao(props) {
     return (
         <span>
             <div className="mb-3">
-                <h1 className="h3 fw-normal mt-3 mb-3 text-center"><b>Comentários</b></h1>
+                <h1 className="h3 fw-normal mt-3 mb-3 text-center"><b>Avaliações</b></h1>
                 {listReview}
             </div>
         </span>

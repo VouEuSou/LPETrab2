@@ -16,7 +16,6 @@ async function enviaDados(data, cliente, albumId) {
         "comentario": data.comentario,
         "nota": parseInt(data.nota)
     };
-    console.log(dados)
     const album = await fetch("http://localhost:3000/avaliacoes",
         {
             method: "POST",
